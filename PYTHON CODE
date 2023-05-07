@@ -1,0 +1,22 @@
+# Define the hypotheses and evidence sets
+H = {'A', 'B', 'C', 'D'}
+E = {'A', 'C'}
+
+# Initialize the mass function with all hypotheses having belief value 0.0
+m = {frozenset({h}): 0.0 for h in H}
+
+# Assign the belief values to hypotheses A and C
+m[frozenset({'A'})] = 0.4
+m[frozenset({'C'})] = 0.6
+
+# Combine the evidence using Dempster's rule of combination
+for e in E:
+    for h in H:
+        if e == h:
+            m[frozenset({h})] += 0.4 * (1 - m[frozenset({h})])
+        else:
+            m[frozenset({h})] += 0.6 * m[frozenset({h})]
+
+# Calculate the degree of belief for each hypothesis
+for h in H:
+    print("Bel({}): {}".format(h, m[frozenset({h})]))
