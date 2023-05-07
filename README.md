@@ -7,6 +7,7 @@ Requirements
 Python 3.x
 
 How to Use
+
 Define the hypotheses and evidence sets in the variables H and E, respectively.
 Initialize the mass function m with all hypotheses having belief value 0.0.
 Assign the belief values to the relevant hypotheses in m.
